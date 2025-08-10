@@ -16,3 +16,4 @@ urlpatterns = [
     path('librarian_view/', librarian_view, name='librarian_view'),
     path('member_view/', member_view, name='member_view'),
 ]
+
