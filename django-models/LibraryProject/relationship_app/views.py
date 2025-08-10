@@ -5,9 +5,7 @@ from django.views.generic import DetailView
 from django.contrib.auth.decorators import user_passes_test
 from .models import Book, Library
 
-# -------------------------------
-# Book Views
-# -------------------------------
+# Book views
 def list_books(request):
     books = Book.objects.all()
     return render(request, 'relationship_app/list_books.html', {'books': books})
@@ -17,10 +15,8 @@ class LibraryDetailView(DetailView):
     template_name = 'relationship_app/library_detail.html'
     context_object_name = 'library'
 
-# -------------------------------
-# User Registration
-# -------------------------------
-def register_view(request):  # ✅ Rename this!
+# Registration view
+def register_view(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
@@ -31,9 +27,7 @@ def register_view(request):  # ✅ Rename this!
         form = UserCreationForm()
     return render(request, 'relationship_app/register.html', {'form': form})
 
-# -------------------------------
-# Role Checks
-# -------------------------------
+# Role check helpers
 def is_admin(user):
     return hasattr(user, 'userprofile') and user.userprofile.role == 'Admin'
 
@@ -43,9 +37,7 @@ def is_librarian(user):
 def is_member(user):
     return hasattr(user, 'userprofile') and user.userprofile.role == 'Member'
 
-# -------------------------------
-# Role-Based Views
-# -------------------------------
+# Role-based views
 @user_passes_test(is_admin)
 def admin_view(request):
     return render(request, 'relationship_app/admin_view.html')
@@ -57,5 +49,3 @@ def librarian_view(request):
 @user_passes_test(is_member)
 def member_view(request):
     return render(request, 'relationship_app/member_view.html')
-
-
