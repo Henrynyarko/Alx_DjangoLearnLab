@@ -3,11 +3,7 @@ from .views import (
     register_view,
     admin_view,
     librarian_view,
-    member_view,                # from .views import (
-#     LibraryDetailView,
-#     ...
-# )
-
+    member_view,                
     add_book,
     edit_book,
     delete_book
