@@ -1,10 +1,13 @@
 from .views import (
     list_books,
-    LibraryDetailView,
     register_view,
     admin_view,
     librarian_view,
-    member_view,
+    member_view,                # from .views import (
+#     LibraryDetailView,
+#     ...
+# )
+
     add_book,
     edit_book,
     delete_book

@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import permission_required
 from .models import Book
 from .forms import BookForm 
 from django.shortcuts import render
+from .models import Library
 
 
 def list_books(request):
@@ -43,3 +44,6 @@ def delete_book(request, pk):
         book.delete()
         return redirect('list_books')
     return render(request, 'relationship_app/book_confirm_delete.html', {'book': book})
+
+from django.views.generic.detail import DetailView
+
